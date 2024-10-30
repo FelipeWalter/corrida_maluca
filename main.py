@@ -45,10 +45,16 @@ while True:
     texto_amarelo = fonte.render('Amarelo Ganhou', True, branco)
 
     if posYCar1 == 350 and movxcar1 >= 900 and movxcar1 > movxcar2:
-            tela.blit(texto_vermelho, (270,70))
+        tela.blit(texto_vermelho, (270,70))
+        acabou = True
+        pygame.mixer.music.stop()
+        pygame.mixer.Sound(vitoria)
     
-    if posYCar2 == 480 and movxcar2 >= 900 and movxcar2 > movxcar1:
+    elif posYCar2 == 480 and movxcar2 >= 900 and movxcar2 > movxcar1:
         tela.blit(texto_amarelo, (270,180))
+        acabou = True
+        pygame.mixer.music.stop()
+        pygame.mixer.Sound(vitoria)
     
     
     pygame.display.update()
