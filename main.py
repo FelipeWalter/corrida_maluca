@@ -2,7 +2,7 @@ import pygame, random
 pygame.init()
 tamanho = (1000,592)
 tela = pygame.display.set_mode( tamanho )
-icone - pygame.image.load("assets/assets/icone.ico")
+icone = pygame.image.load("assets/assets/icone.ico")
 pygame.display.set_icon(icone)
 clock = pygame.time.Clock()
 pygame.display.set_caption('Corrida Maluca')
