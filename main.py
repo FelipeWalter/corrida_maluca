@@ -2,6 +2,8 @@ import pygame, random
 pygame.init()
 tamanho = (1000,592)
 tela = pygame.display.set_mode( tamanho )
+icone - pygame.image.load("assets/assets/icone.ico")
+pygame.display.set_icon(icone)
 clock = pygame.time.Clock()
 pygame.display.set_caption('Corrida Maluca')
 branco = (255,255,255)
@@ -17,6 +19,7 @@ vitoria = pygame.mixer.Sound("assets/assets/vitoria.mp3")
 pygame.mixer.music.load("assets/assets/trilha.mp3")
 pygame.mixer.music.play(-1)
 acabou = False
+som_da_vitoria = False
 while True:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
@@ -30,6 +33,10 @@ while True:
     if not acabou:
         movxcar1 = movxcar1 + random.randint(0,10)
         movxcar2 = movxcar2 + random.randint(0,10)
+    else:
+        if som_da_vitoria == False:
+            pygame.mixer.music.stop()
+            pygame.mixer.Sound(vitoria)
 
     if movxcar1 > 1000:
         movxcar1 = 0
@@ -47,14 +54,10 @@ while True:
     if posYCar1 == 350 and movxcar1 >= 900 and movxcar1 > movxcar2:
         tela.blit(texto_vermelho, (270,70))
         acabou = True
-        pygame.mixer.music.stop()
-        pygame.mixer.Sound(vitoria)
     
     elif posYCar2 == 480 and movxcar2 >= 900 and movxcar2 > movxcar1:
         tela.blit(texto_amarelo, (270,180))
         acabou = True
-        pygame.mixer.music.stop()
-        pygame.mixer.Sound(vitoria)
     
     
     pygame.display.update()
